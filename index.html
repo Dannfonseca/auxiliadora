@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Mercadorias</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-left">
+                <button id="menuToggle" class="menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <h1>Mercadorias</h1>
+            </div>
+            <div class="cart-info">
+                <span id="itemCount">0 itens</span>
+            </div>
+        </div>
+    </header>
+
+    <nav id="sideMenu" class="side-menu">
+        <div class="menu-header">
+            <h2>Categorias</h2>
+            <button id="closeMenu" class="close-menu">&times;</button>
+        </div>
+        <ul>
+            <li><a href="#" data-category="itens-acai" class="active">Itens de Açaí</a></li>
+            <li><a href="#" data-category="copos">Copos</a></li>
+            <li><a href="#" data-category="picole">Picolé</a></li>
+            <li><a href="#" data-category="doces">Doces e Balas</a></li>
+            <li><a href="#" data-category="coberturas">Coberturas</a></li>
+            <li><a href="#" data-category="acai-sorvete">Açaí e Sorvete</a></li>
+            <li><a href="#" data-category="bebidas">Bebidas</a></li>
+            <li><a href="#" data-category="alimentacao">Alimentação e Utilitários</a></li>
+        </ul>
+    </nav>
+
+    <div id="menuOverlay" class="menu-overlay"></div>
+
+    <main class="main-content">
+        <div class="container">
+            <div id="categoryContent" class="category-content">
+                <!-- O conteúdo da categoria será inserido aqui -->
+            </div>
+
+            <div class="action-buttons">
+                <button onclick="enviarWhatsApp()" class="whatsapp-button">
+                    Enviar para WhatsApp
+                </button>
+                <button onclick="limparTudo()" class="clear-button">
+                    Limpar Tudo
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
