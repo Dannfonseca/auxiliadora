@@ -152,6 +152,49 @@ function closeMenu() {
     document.getElementById('menuOverlay').classList.remove('active');
 }
 
+// Função para abrir o modal
+function abrirModal() {
+    const modal = document.getElementById('itemModal');
+    modal.classList.add('active');
+
+    // Preencher a lista de itens no modal
+    const modalItemList = document.getElementById('modalItemList');
+    modalItemList.innerHTML = ''; // Limpa a lista antes de preencher
+
+    Object.entries(categorias).forEach(([categoriaId, categoria]) => {
+        const itensCategoria = categoria.itens.filter(item => 
+            estado.quantidades[estado.normalizarNome(item)] > 0
+        );
+
+        if (itensCategoria.length > 0) {
+            const categorySection = document.createElement('div');
+            categorySection.classList.add('category-section');
+
+            const categoryTitle = document.createElement('h3');
+            categoryTitle.textContent = `(${categoria.nome.toUpperCase()})`;
+            categoryTitle.style.color = categoria.cor; // Aplica a cor da categoria
+            categorySection.appendChild(categoryTitle);
+
+            const itemList = document.createElement('ul');
+            itensCategoria.forEach(item => {
+                const li = document.createElement('li');
+                li.textContent = `${estado.quantidades[estado.normalizarNome(item)]}x ${item}`;
+                itemList.appendChild(li);
+            });
+
+            categorySection.appendChild(itemList);
+            modalItemList.appendChild(categorySection);
+        }
+    });
+}
+
+// Função para fechar o modal
+function fecharModal() {
+    const modal = document.getElementById('itemModal');
+    modal.classList.remove('active');
+}
+
+// Função para enviar mensagem no WhatsApp
 function enviarWhatsApp() {
     let mensagem = '';
     
@@ -180,6 +223,7 @@ function enviarWhatsApp() {
     window.open(linkWhatsApp, "_blank");
 }
 
+// Função para limpar tudo
 function limparTudo() {
     if (confirm('Tem certeza que deseja limpar todas as quantidades?')) {
         estado.limparTudo();
@@ -204,5 +248,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 closeMenu();
             }
         });
+    });
+
+    // Abrir modal ao clicar no contador de itens
+    document.getElementById('itemCount').addEventListener('click', abrirModal);
+
+    // Fechar modal ao clicar no botão de fechar
+    document.getElementById('closeModal').addEventListener('click', fecharModal);
+
+    // Fechar modal ao clicar fora dele
+    document.getElementById('itemModal').addEventListener('click', (e) => {
+        if (e.target === document.getElementById('itemModal')) {
+            fecharModal();
+        }
     });
 });

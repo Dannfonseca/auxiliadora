@@ -21,7 +21,7 @@
                 <h1>Mercadorias</h1>
             </div>
             <div class="cart-info">
-                <span id="itemCount">0 itens</span>
+                <button id="itemCount" class="item-count-button">0 itens</button>
             </div>
         </div>
     </header>
@@ -61,6 +61,22 @@
             </div>
         </div>
     </main>
+
+    <!-- Modal -->
+    <div id="itemModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Itens Selecionados</h2>
+                <button id="closeModal" class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div id="modalItemList"></div>
+            </div>
+            <div class="modal-footer">
+                <button onclick="fecharModal()" class="modal-button">Fechar</button>
+            </div>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
