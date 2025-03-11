@@ -217,9 +217,10 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.75rem;
-  border-radius: 0.25rem;
+  padding: 1rem; /* Aumentado o padding */
+  border-radius: 0.5rem; /* Bordas mais arredondadas */
   background-color: var(--background-color);
+  font-size: 1rem; /* Tamanho da fonte aumentado */
 }
 
 .controls {
@@ -229,8 +230,8 @@ body {
 }
 
 .controls button {
-  width: 28px;
-  height: 28px;
+  width: 32px; /* Botões maiores */
+  height: 32px;
   border-radius: 50%;
   border: none;
   background-color: var(--primary-color);
@@ -239,8 +240,24 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.25rem;
+  font-size: 1.5rem; /* Tamanho da fonte aumentado */
   transition: 0.2s;
+}
+
+/* Diferenciação de cores para itens selecionados */
+.item.selected {
+  background-color: rgba(2, 2, 46, 0.15); /* Tom de vermelho claro (15% de opacidade) */
+  border: 3px solid rgba(8, 121, 46, 0.3); /* Borda sutil com tom de vermelho claro */
+  transition: background-color 0.2s, border-color 0.2s; /* Transição suave */
+}
+
+.item.selected span {
+  color: var(--text-primary); /* Mantém a cor original do texto */
+}
+
+.item:hover {
+  background-color: rgba(255, 99, 71, 0.1); /* Fundo suave ao passar o mouse */
+  transition: background-color 0.2s;
 }
 
 .controls button:hover {
@@ -432,5 +449,18 @@ body {
 @media (max-width: 767px) {
   .side-menu:not(.active) + .main-content {
       margin-left: 0;
+  }
+}
+
+@media (max-width: 767px) {
+  .item {
+      padding: 1rem; /* Mantém o padding maior mesmo no mobile */
+      font-size: 1rem; /* Tamanho da fonte mantido */
+  }
+
+  .controls button {
+      width: 36px; /* Botões ainda maiores no mobile */
+      height: 36px;
+      font-size: 1.5rem; /* Tamanho da fonte mantido */
   }
 }

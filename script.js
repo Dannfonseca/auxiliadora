@@ -93,8 +93,18 @@ const estado = {
     atualizarExibicao(item) {
         const nomeNormalizado = this.normalizarNome(item);
         const elemento = document.getElementById(`quantidade-${nomeNormalizado}`);
+        const itemElement = elemento ? elemento.closest('.item') : null;
+    
         if (elemento) {
             elemento.textContent = this.quantidades[nomeNormalizado];
+        }
+    
+        if (itemElement) {
+            if (this.quantidades[nomeNormalizado] > 0) {
+                itemElement.classList.add('selected');
+            } else {
+                itemElement.classList.remove('selected');
+            }
         }
     },
     
@@ -120,20 +130,24 @@ const estado = {
             <div class="category-card" style="border-color: ${categoria.cor}">
                 <h2 style="color: ${categoria.cor}">${categoria.nome}</h2>
                 <div class="items-list">
-                    ${categoria.itens.map(item => `
-                        <div class="item">
-                            <span>${item}</span>
-                            <div class="controls">
-                                <button onclick="estado.decrementar('${item}')">-</button>
-                                <span id="quantidade-${this.normalizarNome(item)}">${this.quantidades[this.normalizarNome(item)] || 0}</span>
-                                <button onclick="estado.incrementar('${item}')">+</button>
+                    ${categoria.itens.map(item => {
+                        const nomeNormalizado = this.normalizarNome(item);
+                        const quantidade = this.quantidades[nomeNormalizado] || 0;
+                        return `
+                            <div class="item ${quantidade > 0 ? 'selected' : ''}">
+                                <span>${item}</span>
+                                <div class="controls">
+                                    <button onclick="estado.decrementar('${item}')">-</button>
+                                    <span id="quantidade-${nomeNormalizado}">${quantidade}</span>
+                                    <button onclick="estado.incrementar('${item}')">+</button>
+                                </div>
                             </div>
-                        </div>
-                    `).join('')}
+                        `;
+                    }).join('')}
                 </div>
             </div>
         `;
-
+    
         // Atualizar menu ativo
         document.querySelectorAll('.side-menu a').forEach(link => {
             link.classList.toggle('active', link.dataset.category === categoriaId);
