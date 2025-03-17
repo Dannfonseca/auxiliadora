@@ -464,3 +464,65 @@ body {
       font-size: 1.5rem; /* Tamanho da fonte mantido */
   }
 }
+
+/* Estilos para a HOME explicativa */
+.home-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--card-background);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 1rem;
+}
+
+.home-content {
+  background-color: var(--background-color);
+  padding: 2rem;
+  border-radius: 0.5rem;
+  box-shadow: var(--shadow);
+  max-width: 500px;
+  text-align: center;
+}
+
+.home-content h1 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+}
+
+.home-content p {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+}
+
+.home-content ol {
+  text-align: left;
+  margin-bottom: 1.5rem;
+  padding-left: 1.5rem;
+}
+
+.home-content ol li {
+  margin-bottom: 0.5rem;
+  color: var(--text-primary);
+}
+
+.start-button {
+  padding: 0.75rem 1.5rem;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.start-button:hover {
+  background-color: #2563eb;
+}

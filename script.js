@@ -209,9 +209,20 @@ function fecharModal() {
 }
 
 // Função para enviar mensagem no WhatsApp
+// Função para enviar mensagem no WhatsApp
 function enviarWhatsApp() {
     let mensagem = '';
-    
+
+    // Obter a data atual
+    const dataAtual = new Date();
+    const dia = String(dataAtual.getDate()).padStart(2, '0');
+    const mes = String(dataAtual.getMonth() + 1).padStart(2, '0'); // Mês começa do 0
+    const ano = dataAtual.getFullYear();
+    const dataFormatada = `-------------${dia}/${mes}/${ano}------------\n\n`;
+
+    // Adicionar a data formatada no início da mensagem
+    mensagem += `*${dataFormatada}*`;
+
     // Agrupar itens por categoria
     Object.entries(categorias).forEach(([categoriaId, categoria]) => {
         const itensCategoria = categoria.itens.filter(item => 
@@ -277,3 +288,24 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+
+// Verifica se o usuário já viu a HOME
+const hasSeenHome = localStorage.getItem('hasSeenHome');
+
+// Função para esconder a HOME e mostrar o aplicativo principal
+function startApp() {
+    document.getElementById('homeScreen').style.display = 'none';
+    document.getElementById('mainApp').style.display = 'block';
+    localStorage.setItem('hasSeenHome', 'true'); // Marca que o usuário já viu a HOME
+}
+
+// Evento para o botão "Começar"
+document.getElementById('startApp').addEventListener('click', startApp);
+
+// Se o usuário já viu a HOME, esconde a tela inicial
+if (hasSeenHome) {
+    startApp();
+} else {
+    document.getElementById('homeScreen').style.display = 'flex';
+    document.getElementById('mainApp').style.display = 'none';
+}
