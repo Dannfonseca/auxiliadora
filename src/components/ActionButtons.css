@@ -1,0 +1,57 @@
+.action-buttons {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1.5rem;
+    background: linear-gradient(to top, white 80%, rgba(255, 255, 255, 0));
+    z-index: 40;
+    display: flex;
+    gap: 1rem;
+    /* Garante que fique acima de tudo, mas abaixo do menu/modal */
+}
+
+.whatsapp-button,
+.clear-button {
+    flex: 1;
+    /* Ocupam espaço igual */
+    padding: 1rem;
+    border: none;
+    border-radius: var(--border-radius-md);
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: var(--shadow-md);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.whatsapp-button {
+    background-color: var(--success-color);
+    color: white;
+    box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);
+}
+
+.clear-button {
+    background-color: white;
+    color: var(--danger-color);
+    border: 2px solid var(--danger-color);
+    box-shadow: none;
+}
+
+.whatsapp-button:active,
+.clear-button:active {
+    transform: scale(0.98);
+}
+
+@media (min-width: 768px) {
+    .action-buttons {
+        left: 280px;
+        /* Alinha com o novo menu lateral */
+        max-width: 800px;
+        margin: 0 auto;
+        background: transparent;
+        padding-bottom: 2rem;
+    }
+}

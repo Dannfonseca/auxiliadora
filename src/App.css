@@ -1,0 +1,21 @@
+.main-content {
+  padding-top: 80px;
+  min-height: 100vh;
+}
+
+.category-content {
+  margin-bottom: 2rem;
+  padding-bottom: 80px;
+}
+
+@media (min-width: 768px) {
+  .main-content {
+    margin-left: 240px;
+  }
+}
+
+@media (max-width: 767px) {
+  .main-content {
+    margin-left: 0;
+  }
+}
